@@ -1,0 +1,15 @@
+##Equipo Isaac León, Emmanuel Gonzalez, Karla Hernández
+basedatos<- ts(read.csv(("C:\\Users\\SALA-C22\\Downloads\\basedatos.csv"), header=T), frequency = 12, start = 2013)
+basedatos
+fondos<- ts(basedatos[,1], start=2013, freq=12)
+apor <- ts(basedatos[,2], start=2013, freq=12)
+tca<- ts (basedatos[,3], start=2013,freq=12)
+plot(fondos, main="Monto de Fondos", xlab="Mes", ylab="Monto (miles)", col="deepskyblue4")
+plot(apor, main="Número de Aportantes", xlab="Mes", ylab="No. de Personas", col="deepskyblue4")
+plot(tca, main="Tipo de Cambio", xlab="Mes", ylab="Cotización", col="deepskyblue4")
+multiple <- ts.intersect(fondos,apor,tca)
+plot(multiple, main="Serie Múltiple", xlab="Mes", ylab="Cantidad", col="deepskyblue4")
+multiple2<-window(multiple, start=c(2013,1), end=c(2014,1))
+multiple3<-window(multiple, start=c(2014,2), end=c(2015,6))
+plot(multiple2, main="Serie Múltiple", xlab="Mes", ylab="Cantidad", col="deepskyblue4")
+plot(multiple3, main="Serie Múltiple", xlab="Mes", ylab="Cantidad", col="deepskyblue4")
